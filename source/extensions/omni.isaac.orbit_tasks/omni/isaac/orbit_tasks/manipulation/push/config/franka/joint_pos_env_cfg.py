@@ -37,12 +37,15 @@ class FrankaTBlockPushEnvCfg(PushEnvCfg):
         self.actions.finger_joint_pos = mdp.BinaryJointPositionActionCfg(
             asset_name="robot",
             joint_names=["panda_finger.*"],
-            open_command_expr={"panda_finger_.*": 0.04},
+            # open_command_expr={"panda_finger_.*": 0.04},
+            open_command_expr={"panda_finger_.*": 0.0},
             close_command_expr={"panda_finger_.*": 0.0},
         )
         # Set the body name for the end effector
-        self.commands.object_pose.body_name = "panda_hand"
+        # self.commands.object_pose.body_name = "panda_hand"
+        self.commands.object_pose.body_name = "Object"
 
+        # TODO change object to T-shape
         # Set Cube as object
         self.scene.object = RigidObjectCfg(
             prim_path="{ENV_REGEX_NS}/Object",
